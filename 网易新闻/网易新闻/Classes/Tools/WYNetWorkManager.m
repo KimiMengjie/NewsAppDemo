@@ -11,12 +11,12 @@
 
 @implementation WYNetWorkManager
 
--(instancetype)sharedNetWorkManager
++ (instancetype)sharedNetWorkManager
 {
     static WYNetWorkManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[WYNetWorkManager alloc] init];
+        instance = [[self alloc] init];
     });
     
     return instance;

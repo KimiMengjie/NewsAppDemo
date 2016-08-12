@@ -7,6 +7,7 @@
 //
 
 #import "WYNewsController.h"
+#import "WYNetWorkManager.h"
 
 @interface WYNewsController ()<UITableViewDataSource>
 
@@ -18,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupUI];
+    [self loadData];
 }
 
 - (void)setupUI
@@ -55,5 +57,17 @@
     
     return cell;
 }
+/**
+ 尽量不要在控制器里面直接去使用AFN.把afn使用我们自己的代码包装层.
+ 如果以后要换网络请求的框架,那么只需要更改我们包装的那一层就可以了
+ 如果直接在控制器里面使用AFN的话,在真实开发过程中,一个app有几十个界面.每个界面都去改很麻烦
+ */
+#pragma mark - 数据加载
+- (void)loadData{
+    [[WYNetWorkManager sharedNetWorkManager] getHomeNewListWithChannelID:@"T1348649079062" completion:^(id response, NSError *error) {
+        NSLog(@"%@",response);
+    }];
+}
+
 
 @end

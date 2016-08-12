@@ -16,7 +16,7 @@
  *  全局访问点，网络管理是个单例
  */
 
-- (instancetype)sharedNetWorkManager;
++ (instancetype)sharedNetWorkManager;
 
 /**
  *  GET请求
@@ -25,7 +25,7 @@
  *  @param parameters 请求参数
  *  @param completion 请求完成后的回调
  */
-- (void)getWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters completion:(void(^)(id response, NSError *error)) completion;
+//- (void)getWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters completion:(void(^)(id response, NSError *error)) completion;
 
 /**
  *  获取首页新闻页面
