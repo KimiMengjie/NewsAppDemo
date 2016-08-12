@@ -9,8 +9,7 @@
 #import "WYNewsController.h"
 #import "WYNetWorkManager.h"
 #import "WYNewsModel.h"
-#import "WYNormalCell.h"
-#import "WYNewsImgExtraCell.h"
+#import "WYNewsBaseCell.h"
 
 @interface WYNewsController ()<UITableViewDataSource>
 
@@ -21,7 +20,8 @@
 @end
 
 static NSString *normalCellid = @"normalCell";
-static NSString *imgExtraCellid = @"imgExtraCellid";
+static NSString *imgExtraCellid = @"imgExtraCell";
+static NSString *bigImgCellid = @"bigImgCell";
 
 @implementation WYNewsController
 
@@ -40,6 +40,7 @@ static NSString *imgExtraCellid = @"imgExtraCellid";
     //    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
     [tableView registerNib:[UINib nibWithNibName:@"WYNormalCell" bundle:nil] forCellReuseIdentifier:normalCellid];
     [tableView registerNib:[UINib nibWithNibName:@"WYNewsImgExtraCell" bundle:nil] forCellReuseIdentifier:imgExtraCellid];
+    [tableView registerNib:[UINib nibWithNibName:@"WYNewsBigImgCell" bundle:nil] forCellReuseIdentifier:bigImgCellid];
     //添加数据源方法
     tableView.dataSource = self;
     //将tableView添加到当前视图当中
@@ -70,21 +71,17 @@ static NSString *imgExtraCellid = @"imgExtraCellid";
     //取得模型
     WYNewsModel *model = self.newsList[indexPath.row];
     
-    WYNewsImgExtraCell *cell = [tableView dequeueReusableCellWithIdentifier:imgExtraCellid forIndexPath:indexPath];
-    //设置显示内容
-    [cell.imgsrcView sd_setImageWithURL:[NSURL URLWithString:model.imgsrc]];
-    //设置标题
-    [cell.titleLabel setText:model.title];
-    //设置来源
-    [cell.sourceLabel setText:model.source];
-    //设置跟贴数
-    [cell.replyCountLabel setText:model.replyCount];
+    NSString *reuseID = normalCellid;
+    //判断内容取不同的cell
+    if (model.imgextra.count > 0) {
+        reuseID = imgExtraCellid;
+    }else if (model.imgType){
+        reuseID = bigImgCellid;
+    }
     
-    //当前遍历的索引idx
-    [model.imgextra enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        //给UIImageView赋值，这里obj是字典
-        [cell.imgExtra[idx] sd_setImageWithURL:[NSURL URLWithString:obj[@"imgsrc"]]];
-    }];
+    WYNewsBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
+    
+    cell.model = model;
     
     return cell;
 }
