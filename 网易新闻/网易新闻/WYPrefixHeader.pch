@@ -1,0 +1,14 @@
+//
+//  WYPrefixHeader.pch
+//  网易新闻
+//
+//  Created by kimi on 16/8/12.
+//  Copyright © 2016年 kimi. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+//#import <Masonry.h>
+//#import "YYModel.h"
+
+#endif

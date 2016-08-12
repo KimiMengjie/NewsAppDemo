@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F3994D61D5DA0300053C6D6 /* WYNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3994D51D5DA0300053C6D6 /* WYNetWorkManager.m */; };
 		3F7098DC1D5D71D80030F5CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098DB1D5D71D80030F5CC /* main.m */; };
 		3F7098DF1D5D71D80030F5CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098DE1D5D71D80030F5CC /* AppDelegate.m */; };
 		3F7098E21D5D71D80030F5CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098E11D5D71D80030F5CC /* ViewController.m */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F3994D41D5DA0300053C6D6 /* WYNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetWorkManager.h; sourceTree = "<group>"; };
+		3F3994D51D5DA0300053C6D6 /* WYNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetWorkManager.m; sourceTree = "<group>"; };
+		3F3994D71D5DA32C0053C6D6 /* WYPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPrefixHeader.pch; sourceTree = "<group>"; };
 		3F7098D71D5D71D80030F5CC /* 网易新闻.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "网易新闻.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7098DB1D5D71D80030F5CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F7098DD1D5D71D80030F5CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +58,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3F3994D31D5D9FD80053C6D6 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				3F3994D41D5DA0300053C6D6 /* WYNetWorkManager.h */,
+				3F3994D51D5DA0300053C6D6 /* WYNetWorkManager.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		3F7098CE1D5D71D80030F5CC = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +97,7 @@
 				3F7098E81D5D71D80030F5CC /* LaunchScreen.storyboard */,
 				3F7098EB1D5D71D80030F5CC /* Info.plist */,
 				3F7098DA1D5D71D80030F5CC /* Supporting Files */,
+				3F3994D71D5DA32C0053C6D6 /* WYPrefixHeader.pch */,
 			);
 			path = "网易新闻";
 			sourceTree = "<group>";
@@ -99,6 +113,7 @@
 		3F7098F11D5D76070030F5CC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3F3994D31D5D9FD80053C6D6 /* Tools */,
 				3F7098F21D5D76070030F5CC /* Home */,
 				3F7098F31D5D76070030F5CC /* Main */,
 			);
@@ -255,6 +270,7 @@
 				3F7098DF1D5D71D80030F5CC /* AppDelegate.m in Sources */,
 				3F7098DC1D5D71D80030F5CC /* main.m in Sources */,
 				3F7098F61D5D76520030F5CC /* WYTabBarController.m in Sources */,
+				3F3994D61D5DA0300053C6D6 /* WYNetWorkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +375,7 @@
 			baseConfigurationReference = C0578A8A98193519155BC337 /* Pods-网易新闻.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "网易新闻/WYPrefixHeader.pch";
 				INFOPLIST_FILE = "网易新闻/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "kimi.cn.----";
@@ -371,6 +388,7 @@
 			baseConfigurationReference = 6CACB74B2CE51F4550DE53FB /* Pods-网易新闻.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "网易新闻/WYPrefixHeader.pch";
 				INFOPLIST_FILE = "网易新闻/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "kimi.cn.----";

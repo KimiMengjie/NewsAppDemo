@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AFNetworkActivityIndicatorManager.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //开启小菊花,网络指示器
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     //设置tabBar字体颜色
     [self setAppearanceTintColor];
     
