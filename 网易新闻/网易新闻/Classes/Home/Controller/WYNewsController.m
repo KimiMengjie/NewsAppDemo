@@ -96,7 +96,7 @@ static NSString *bigImgCellid = @"bigImgCell";
     NSString *tid = @"T1348649079062";
     
     [[WYNetWorkManager sharedNetWorkManager] getHomeNewListWithChannelID:tid completion:^(id response, NSError *error) {
-        NSLog(@"%@",response);
+//        NSLog(@"%@",response);
         //取到频道id对应的数据，使用yymodel字典转模型
         NSArray *array = [NSArray yy_modelArrayWithClass:[WYNewsModel class] json:response[tid]];
         
