@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F3994D61D5DA0300053C6D6 /* WYNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3994D51D5DA0300053C6D6 /* WYNetWorkManager.m */; };
+		3F3994DB1D5DC79D0053C6D6 /* WYNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3994DA1D5DC79D0053C6D6 /* WYNewsModel.m */; };
+		3F3994E01D5DC8540053C6D6 /* WYNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3994DF1D5DC8540053C6D6 /* WYNewsController.m */; };
 		3F7098DC1D5D71D80030F5CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098DB1D5D71D80030F5CC /* main.m */; };
 		3F7098DF1D5D71D80030F5CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098DE1D5D71D80030F5CC /* AppDelegate.m */; };
 		3F7098E21D5D71D80030F5CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098E11D5D71D80030F5CC /* ViewController.m */; };
@@ -21,6 +23,10 @@
 		3F3994D41D5DA0300053C6D6 /* WYNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetWorkManager.h; sourceTree = "<group>"; };
 		3F3994D51D5DA0300053C6D6 /* WYNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetWorkManager.m; sourceTree = "<group>"; };
 		3F3994D71D5DA32C0053C6D6 /* WYPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPrefixHeader.pch; sourceTree = "<group>"; };
+		3F3994D91D5DC79D0053C6D6 /* WYNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNewsModel.h; sourceTree = "<group>"; };
+		3F3994DA1D5DC79D0053C6D6 /* WYNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsModel.m; sourceTree = "<group>"; };
+		3F3994DE1D5DC8540053C6D6 /* WYNewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNewsController.h; sourceTree = "<group>"; };
+		3F3994DF1D5DC8540053C6D6 /* WYNewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsController.m; sourceTree = "<group>"; };
 		3F7098D71D5D71D80030F5CC /* 网易新闻.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "网易新闻.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7098DB1D5D71D80030F5CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F7098DD1D5D71D80030F5CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,6 +71,31 @@
 				3F3994D51D5DA0300053C6D6 /* WYNetWorkManager.m */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		3F3994D81D5DC7840053C6D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3F3994D91D5DC79D0053C6D6 /* WYNewsModel.h */,
+				3F3994DA1D5DC79D0053C6D6 /* WYNewsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3F3994DC1D5DC7CC0053C6D6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F3994DE1D5DC8540053C6D6 /* WYNewsController.h */,
+				3F3994DF1D5DC8540053C6D6 /* WYNewsController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3F3994DD1D5DC7CC0053C6D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3F7098CE1D5D71D80030F5CC = {
@@ -123,6 +154,9 @@
 		3F7098F21D5D76070030F5CC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				3F3994DC1D5DC7CC0053C6D6 /* Controller */,
+				3F3994DD1D5DC7CC0053C6D6 /* View */,
+				3F3994D81D5DC7840053C6D6 /* Model */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -266,10 +300,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F3994DB1D5DC79D0053C6D6 /* WYNewsModel.m in Sources */,
 				3F7098E21D5D71D80030F5CC /* ViewController.m in Sources */,
 				3F7098DF1D5D71D80030F5CC /* AppDelegate.m in Sources */,
 				3F7098DC1D5D71D80030F5CC /* main.m in Sources */,
 				3F7098F61D5D76520030F5CC /* WYTabBarController.m in Sources */,
+				3F3994E01D5DC8540053C6D6 /* WYNewsController.m in Sources */,
 				3F3994D61D5DA0300053C6D6 /* WYNetWorkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
