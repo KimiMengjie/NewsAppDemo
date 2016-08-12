@@ -8,7 +8,7 @@
 
 #import "WYNewsController.h"
 
-@interface WYNewsController ()
+@interface WYNewsController ()<UITableViewDataSource>
 
 @end
 
@@ -17,14 +17,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setupUI];
 }
 
 - (void)setupUI
 {
     UITableView *tableView = [[UITableView alloc]init];
     
+    //注册cell
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+    
+    //添加数据源方法
+    tableView.dataSource = self;
+    //将tableView添加到当前视图当中
+    [self.view addSubview:tableView];
+    
+    //自动布局
+    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
 }
 
+#pragma mark - UITableViewDataSource
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
+    
+    //测试数据
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    
+    return cell;
+}
 
 @end

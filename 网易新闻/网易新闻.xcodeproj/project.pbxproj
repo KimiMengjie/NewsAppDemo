@@ -12,7 +12,6 @@
 		3F3994E01D5DC8540053C6D6 /* WYNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3994DF1D5DC8540053C6D6 /* WYNewsController.m */; };
 		3F7098DC1D5D71D80030F5CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098DB1D5D71D80030F5CC /* main.m */; };
 		3F7098DF1D5D71D80030F5CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098DE1D5D71D80030F5CC /* AppDelegate.m */; };
-		3F7098E21D5D71D80030F5CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098E11D5D71D80030F5CC /* ViewController.m */; };
 		3F7098E71D5D71D80030F5CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F7098E61D5D71D80030F5CC /* Assets.xcassets */; };
 		3F7098EA1D5D71D80030F5CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7098E81D5D71D80030F5CC /* LaunchScreen.storyboard */; };
 		3F7098F61D5D76520030F5CC /* WYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7098F51D5D76520030F5CC /* WYTabBarController.m */; };
@@ -31,8 +30,6 @@
 		3F7098DB1D5D71D80030F5CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F7098DD1D5D71D80030F5CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F7098DE1D5D71D80030F5CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3F7098E01D5D71D80030F5CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3F7098E11D5D71D80030F5CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3F7098E61D5D71D80030F5CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F7098E91D5D71D80030F5CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F7098EB1D5D71D80030F5CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,8 +119,6 @@
 				3F7098F11D5D76070030F5CC /* Classes */,
 				3F7098DD1D5D71D80030F5CC /* AppDelegate.h */,
 				3F7098DE1D5D71D80030F5CC /* AppDelegate.m */,
-				3F7098E01D5D71D80030F5CC /* ViewController.h */,
-				3F7098E11D5D71D80030F5CC /* ViewController.m */,
 				3F7098E61D5D71D80030F5CC /* Assets.xcassets */,
 				3F7098E81D5D71D80030F5CC /* LaunchScreen.storyboard */,
 				3F7098EB1D5D71D80030F5CC /* Info.plist */,
@@ -301,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F3994DB1D5DC79D0053C6D6 /* WYNewsModel.m in Sources */,
-				3F7098E21D5D71D80030F5CC /* ViewController.m in Sources */,
 				3F7098DF1D5D71D80030F5CC /* AppDelegate.m in Sources */,
 				3F7098DC1D5D71D80030F5CC /* main.m in Sources */,
 				3F7098F61D5D76520030F5CC /* WYTabBarController.m in Sources */,
