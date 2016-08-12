@@ -17,6 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //设置tabBar字体颜色
+    [self setAppearanceTintColor];
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
     [self.window setBackgroundColor:[UIColor whiteColor]];
@@ -25,6 +28,13 @@
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)setAppearanceTintColor{
+    UITabBar *tabBar = [UITabBar appearance];
+    
+    //设置文字颜色
+    tabBar.tintColor = [UIColor redColor];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

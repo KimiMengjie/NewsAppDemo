@@ -58,6 +58,11 @@
     vc.title = dict[@"title"];
     //3.设置不同状态显示的图片
     
+    vc.tabBarItem.image = [UIImage imageNamed:[NSString stringWithFormat:@"tabbar_icon_%@_normal",dict[@"imageName"]]];
+    //设置选中图片
+    vc.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"tabbar_icon_%@_highlight",dict[@"imageName"]]];
+    
+    
     //使用导航控制器包裹该控制器返回
     
     return [[UINavigationController alloc]initWithRootViewController:vc];
