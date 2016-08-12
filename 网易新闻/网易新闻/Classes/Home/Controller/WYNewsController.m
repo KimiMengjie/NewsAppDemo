@@ -8,8 +8,13 @@
 
 #import "WYNewsController.h"
 #import "WYNetWorkManager.h"
+#import "WYNewsModel.h"
 
 @interface WYNewsController ()<UITableViewDataSource>
+
+@property (nonatomic,strong)NSArray *newsList;
+
+@property (nonatomic,weak)UITableView *tableView;
 
 @end
 
@@ -39,21 +44,26 @@
         make.edges.equalTo(self.view);
     }];
     
+    self.tableView = tableView;
+    
 }
 
 #pragma mark - UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.newsList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //取得模型
+    WYNewsModel *model = self.newsList[indexPath.row];
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
     
-    //测试数据
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    //测试数据显示
+    cell.textLabel.text = model.title;
     
     return cell;
 }
@@ -64,8 +74,18 @@
  */
 #pragma mark - 数据加载
 - (void)loadData{
-    [[WYNetWorkManager sharedNetWorkManager] getHomeNewListWithChannelID:@"T1348649079062" completion:^(id response, NSError *error) {
+    
+    NSString *tid = @"T1348649079062";
+    
+    [[WYNetWorkManager sharedNetWorkManager] getHomeNewListWithChannelID:tid completion:^(id response, NSError *error) {
         NSLog(@"%@",response);
+        //取到频道id对应的数据，使用yymodel字典转模型
+        NSArray *array = [NSArray yy_modelArrayWithClass:[WYNewsModel class] json:response[tid]];
+        
+        self.newsList = array;
+        
+        //重新刷新数据
+        [self.tableView reloadData];
     }];
 }
 
