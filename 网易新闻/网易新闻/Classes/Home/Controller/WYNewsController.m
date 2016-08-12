@@ -10,6 +10,7 @@
 #import "WYNetWorkManager.h"
 #import "WYNewsModel.h"
 #import "WYNormalCell.h"
+#import "WYNewsImgExtraCell.h"
 
 @interface WYNewsController ()<UITableViewDataSource>
 
@@ -18,6 +19,9 @@
 @property (nonatomic,weak)UITableView *tableView;
 
 @end
+
+static NSString *normalCellid = @"normalCell";
+static NSString *imgExtraCellid = @"imgExtraCellid";
 
 @implementation WYNewsController
 
@@ -34,7 +38,8 @@
     
     //注册cell
     //    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
-    [tableView registerNib:[UINib nibWithNibName:@"WYNormalCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
+    [tableView registerNib:[UINib nibWithNibName:@"WYNormalCell" bundle:nil] forCellReuseIdentifier:normalCellid];
+    [tableView registerNib:[UINib nibWithNibName:@"WYNewsImgExtraCell" bundle:nil] forCellReuseIdentifier:imgExtraCellid];
     //添加数据源方法
     tableView.dataSource = self;
     //将tableView添加到当前视图当中
@@ -65,7 +70,7 @@
     //取得模型
     WYNewsModel *model = self.newsList[indexPath.row];
     
-    WYNormalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
+    WYNewsImgExtraCell *cell = [tableView dequeueReusableCellWithIdentifier:imgExtraCellid forIndexPath:indexPath];
     //设置显示内容
     [cell.imgsrcView sd_setImageWithURL:[NSURL URLWithString:model.imgsrc]];
     //设置标题
@@ -73,7 +78,13 @@
     //设置来源
     [cell.sourceLabel setText:model.source];
     //设置跟贴数
-    [cell.replayCountLabel setText:model.replyCount];
+    [cell.replyCountLabel setText:model.replyCount];
+    
+    //当前遍历的索引idx
+    [model.imgextra enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //给UIImageView赋值，这里obj是字典
+        [cell.imgExtra[idx] sd_setImageWithURL:[NSURL URLWithString:obj[@"imgsrc"]]];
+    }];
     
     return cell;
 }
