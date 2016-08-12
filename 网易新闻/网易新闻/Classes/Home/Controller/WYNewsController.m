@@ -9,6 +9,7 @@
 #import "WYNewsController.h"
 #import "WYNetWorkManager.h"
 #import "WYNewsModel.h"
+#import "WYNormalCell.h"
 
 @interface WYNewsController ()<UITableViewDataSource>
 
@@ -32,19 +33,23 @@
     UITableView *tableView = [[UITableView alloc]init];
     
     //注册cell
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
-    
+    //    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+    [tableView registerNib:[UINib nibWithNibName:@"WYNormalCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     //添加数据源方法
     tableView.dataSource = self;
     //将tableView添加到当前视图当中
     [self.view addSubview:tableView];
+    self.tableView = tableView;
+    //设置自动行高,注意自动行高，需要设置与底部的边距
+    tableView.rowHeight = UITableViewAutomaticDimension;
+    tableView.estimatedRowHeight = 100;
     
     //自动布局
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
     
-    self.tableView = tableView;
+    
     
 }
 
@@ -60,10 +65,15 @@
     //取得模型
     WYNewsModel *model = self.newsList[indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
-    
-    //测试数据显示
-    cell.textLabel.text = model.title;
+    WYNormalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
+    //设置显示内容
+    [cell.imgsrcView sd_setImageWithURL:[NSURL URLWithString:model.imgsrc]];
+    //设置标题
+    [cell.titleLabel setText:model.title];
+    //设置来源
+    [cell.sourceLabel setText:model.source];
+    //设置跟贴数
+    [cell.replayCountLabel setText:model.replyCount];
     
     return cell;
 }
