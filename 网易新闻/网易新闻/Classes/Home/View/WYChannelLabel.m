@@ -16,7 +16,7 @@
 
 + (instancetype)labelWithModel:(WYChannelModel *)model
 {
-    WYChannelLabel *label = [[self alloc]labelWithText:model.tname textColor:[UIColor blackColor] fontSize:kLabelMaxSizeFont];
+    WYChannelLabel *label = [self labelWithText:model.tname textColor:[UIColor blackColor] fontSize:kLabelMaxSizeFont];
     //根据内容调整大小
     [label sizeToFit];
     
@@ -26,14 +26,26 @@
     return label;
 }
 
-- (instancetype)labelWithText:(NSString*)text textColor:(UIColor*)textColor fontSize:(CGFloat)fontSize
+-(void)setScale:(CGFloat)scale
 {
-    UILabel *label = [[UILabel alloc]init];
-    label.text = text;
-    label.textColor = textColor;
-    label.font = [UIFont systemFontOfSize:fontSize];
+    _scale  = scale;
+    //1.设置label的缩放比例
+    [self setTextColor:[UIColor colorWithRed:scale green:0 blue:0 alpha:1]];
     
-    return label;
+    //2.大->小
+    /*
+     14->0
+     18->1
+     */
+    CGFloat sc = 14 + (18 - 14) *scale;
+    //label自身缩放
+    //增加动画
+    [UIView animateWithDuration:.2 animations:^{
+        self.transform = CGAffineTransformMakeScale(sc / 14, sc / 14);
+    }];
+    
 }
+
+
 
 @end

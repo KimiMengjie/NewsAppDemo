@@ -13,7 +13,7 @@
 
 static NSString *infoCell = @"infoCell";
 
-@interface WYHomeViewController ()<UICollectionViewDataSource>
+@interface WYHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,WYChannelViewDelegate>
 /**
  *  频道的视图
  */
@@ -70,6 +70,9 @@ static NSString *infoCell = @"infoCell";
     }];
     
     [self setupCollectionView];
+    
+    //设置channelView的代理
+    channelView.delegate = self;
   
 }
 /**
@@ -93,6 +96,7 @@ static NSString *infoCell = @"infoCell";
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:infoCell];
     //设置数据源
     collectionView.dataSource = self;
+    collectionView.delegate = self;
     //设置分页
     collectionView.pagingEnabled = true;
     
@@ -169,6 +173,26 @@ static NSString *infoCell = @"infoCell";
     return vc;
 }
 
+#pragma mark - UICollectionViewDelegate
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //获取滑动比例
+    CGFloat radio = scrollView.contentOffset.x / scrollView.frame.size.width;
+    NSLog(@"%f",radio);
+    
+    //取得当前页面的索引，即他的整数部分
+    NSInteger index = radio / 1;
+    
+    //根据滚动比例求出缩放比例,即小数部分
+    CGFloat scale = radio - index;
+    
+    //设置下一页的缩放比例
+    [self.channelView setScale:scale forIndex:index + 1];
+    //设置上一页的缩放比例
+    [self.channelView setScale:1-scale forIndex:index];
+}
+
 #pragma mark - 懒加载
 -(NSMutableDictionary *)vcCache
 {
@@ -179,4 +203,16 @@ static NSString *infoCell = @"infoCell";
     return _vcCache;
 }
 
+#pragma mark - WYChannelViewDelegate
+
+- (void)changeView:(WYChannelView *)channelView clickWithIndex:(NSInteger)index
+{
+    NSLog(@"点击%zd",index);
+    //设置点击位置，手动指定cell
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    
+    //让collectionView滚到指定的cell
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:false];
+    
+}
 @end

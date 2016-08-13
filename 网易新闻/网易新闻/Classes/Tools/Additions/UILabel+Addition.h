@@ -10,6 +10,6 @@
 
 @interface UILabel (Addition)
 
-+ (instancetype)labelWithText:(NSString*)text andTextColor:(UIColor*)textColor andFontSize:(CGFloat)fontSize;
++ (instancetype)labelWithText:(NSString*)text textColor:(UIColor*)textColor fontSize:(CGFloat)fontSize;
 
 @end

@@ -10,9 +10,9 @@
 
 @implementation UILabel (Addition)
 
-+ (instancetype)labelWithText:(NSString*)text andTextColor:(UIColor*)textColor andFontSize:(CGFloat)fontSize
++ (instancetype)labelWithText:(NSString*)text textColor:(UIColor*)textColor fontSize:(CGFloat)fontSize
 {
-    UILabel* label = [[UILabel alloc] init];
+    UILabel* label = [[self alloc] init];
     label.text = text;
     label.textColor = textColor;
     label.font = [UIFont systemFontOfSize:fontSize];

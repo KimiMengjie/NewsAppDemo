@@ -54,10 +54,48 @@
         
         //X递增
         x += label.frame.size.width + margin;
+        
+        //添加tap手势
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGesture:)];
+        
+        //手势添加到label上
+        [label addGestureRecognizer:tap];
+        
+        //开始用户交互
+        label.userInteractionEnabled = true;
     }
     //设置显示范围
     [self.scrollView setContentSize:CGSizeMake(x, 35)];
+    
+    //初始的时候先给第0个label设置成红色
+    [self setScale:1 forIndex:0];
 }
+
+#pragma mark - 手势监听
+- (void)tapGesture:(UITapGestureRecognizer *)ges
+{
+    NSLog(@"%@",ges.view);
+    //通过代理方法，告诉viewController被点击切换内容
+    if ([self.delegate respondsToSelector:@selector(changeView:clickWithIndex:)]) {
+        //获取点击的index
+        [self.delegate changeView:self clickWithIndex:[self.scrollView.subviews indexOfObject:ges.view]];
+    }
+    //遍历如果是选中的话就把label放大，其他设置为0
+    for (WYChannelLabel *label in self.scrollView.subviews) {
+        label.scale = ges.view == label;
+    }
+}
+
+- (void)setScale:(CGFloat)scale forIndex:(NSInteger)index
+{
+    
+    //1.取得对应index的label
+    WYChannelLabel *label = self.scrollView.subviews[index];
+    //2.设置缩放比例
+    label.scale = scale;
+    
+}
+
 
 
 @end

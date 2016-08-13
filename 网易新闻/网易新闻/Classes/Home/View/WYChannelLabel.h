@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 @class WYChannelModel;
 @interface WYChannelLabel : UILabel
-
+/**
+ *  缩放属性
+ */
+@property (nonatomic,assign) CGFloat scale;
 /**
  *  创建头条label
  *
@@ -18,6 +21,5 @@
  *  @return label
  */
 + (instancetype)labelWithModel:(WYChannelModel *)model;
-
 
 @end
