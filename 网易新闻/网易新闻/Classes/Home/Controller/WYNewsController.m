@@ -60,7 +60,8 @@ static NSString *bigImgCellid = @"bigImgCell";
     self.tableView = tableView;
     //设置自动行高,注意自动行高，需要设置与底部的边距
     tableView.rowHeight = UITableViewAutomaticDimension;
-    tableView.estimatedRowHeight = 100;
+    //预估行高bug
+    tableView.estimatedRowHeight = 200;
     
     //自动布局
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
