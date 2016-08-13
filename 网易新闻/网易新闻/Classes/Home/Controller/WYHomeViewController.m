@@ -9,6 +9,8 @@
 #import "WYHomeViewController.h"
 #import "WYChannelView.h"
 #import "WYNewsController.h"
+#import "WYChannelModel.h"
+
 
 @interface WYHomeViewController ()
 
@@ -20,13 +22,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupUI];
+    
+
 }
 
 - (void)setupUI
 {
+    /**
+     *  添加头条
+     */
     //关闭自动调整内容位置。
     self.automaticallyAdjustsScrollViewInsets = false;
+    
     WYChannelView *channelView = [WYChannelView channelView];
+    
+    //读取频道数据显示到界面,从模型中获取数据
+    channelView.channels = [WYChannelModel channels];
     //加入子视图
     [self.view addSubview:channelView];
     
@@ -35,6 +46,10 @@
         make.height.offset(35);
         make.top.equalTo(self.mas_topLayoutGuideBottom);
     }];
+    
+    /**
+     下半部分
+     */
     WYNewsController *vc = [[WYNewsController alloc]init];
     
     UIView *view = vc.view;

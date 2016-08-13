@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface WYChannelView : UIView
+/**
+ *  频道模型
+ */
+@property (nonatomic,strong)NSArray *channels;
 
 + (instancetype)channelView;
 
