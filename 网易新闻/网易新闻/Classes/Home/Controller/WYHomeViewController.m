@@ -74,7 +74,6 @@ static NSString *infoCell = @"infoCell";
 - (void)setupCollectionView{
     //创建一个layout
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-    
     //设置滑动方向
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     //设置行间距和列间距
@@ -83,6 +82,9 @@ static NSString *infoCell = @"infoCell";
     
     //初始化一个collectionView
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+    //取消滚动条
+    collectionView.showsVerticalScrollIndicator = false;
+    collectionView.showsHorizontalScrollIndicator = false;
     //注册cell
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:infoCell];
     //设置数据源
@@ -98,9 +100,23 @@ static NSString *infoCell = @"infoCell";
     //添加约束
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.channelView.mas_bottom);
-        make.leading.trailing.bottom.equalTo(self.view);
+        make.leading.trailing.equalTo(self.view);
+        //tabBar的top
+        make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
     }];
 
+}
+/**
+ *  控制器中的视图布局完成之后会调用这个方法
+ */
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    //取得layout
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    //设置size,itemSize是layout的属性,大小是collectionView大小
+    layout.itemSize = self.collectionView.frame.size;
+    NSLog(@"%@",NSStringFromCGRect(self.collectionView.frame));
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -116,9 +132,7 @@ static NSString *infoCell = @"infoCell";
 
     //设置随机颜色供测试
     cell.backgroundColor = [UIColor randomColor];
-    
 
-    
     return cell;
 }
 
