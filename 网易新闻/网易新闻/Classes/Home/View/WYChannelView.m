@@ -94,6 +94,27 @@
     //2.设置缩放比例
     label.scale = scale;
     
+    /**
+     *  解决label移动到中间问题
+     */
+    if (scale == 1) {
+        //将该index对应的label移动到中间
+        //滚动的距离 = label的中心点x - 当前scrollView的宽的一半
+        CGFloat offsetX = label.center.x - self.scrollView.frame.size.width * 0.5;
+        
+        //定义最小的偏移量
+        CGFloat minOffset = 0;
+        CGFloat maxOffset = self.scrollView.contentSize.width - self.scrollView.frame.size.width;
+        
+        //如果比最小的偏移量还小的话,就给他最小值?
+        if (offsetX < minOffset) {
+            offsetX = 0;
+        }else if (offsetX > maxOffset){
+            offsetX = maxOffset;
+        }
+        //设置偏移
+        [self.scrollView setContentOffset:CGPointMake(offsetX, 0) animated:true];
+    }
 }
 
 

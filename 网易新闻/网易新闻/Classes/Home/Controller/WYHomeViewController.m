@@ -89,6 +89,8 @@ static NSString *infoCell = @"infoCell";
     
     //初始化一个collectionView
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+    //设置背景颜色
+    collectionView.backgroundColor = [UIColor whiteColor];
     //取消滚动条
     collectionView.showsVerticalScrollIndicator = false;
     collectionView.showsHorizontalScrollIndicator = false;
@@ -186,11 +188,14 @@ static NSString *infoCell = @"infoCell";
     
     //根据滚动比例求出缩放比例,即小数部分
     CGFloat scale = radio - index;
-    
-    //设置下一页的缩放比例
-    [self.channelView setScale:scale forIndex:index + 1];
-    //设置上一页的缩放比例
-    [self.channelView setScale:1-scale forIndex:index];
+    //防止越界
+    if (index + 1 < self.channels.count) {
+        //设置下一页的缩放比例
+        [self.channelView setScale:scale forIndex:index + 1];
+        //设置上一页的缩放比例
+        [self.channelView setScale:1-scale forIndex:index]; 
+    }
+
 }
 
 #pragma mark - 懒加载
