@@ -28,6 +28,10 @@ static NSString *infoCell = @"infoCell";
  *  记录频道的数据
  */
 @property (nonatomic,strong)NSArray *channels;
+/**
+ *  控制器缓存
+ */
+@property (nonatomic,strong)NSMutableDictionary *vcCache;
 
 @end
 
@@ -37,7 +41,8 @@ static NSString *infoCell = @"infoCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupUI];
-    
+    //获取模型数据
+    [WYChannelModel channels];
 
 }
 
@@ -54,7 +59,6 @@ static NSString *infoCell = @"infoCell";
     //读取频道数据显示到界面,从模型中获取数据
     self.channels =[WYChannelModel channels];
     channelView.channels = self.channels;
-    
     self.channelView =channelView;
     //加入子视图
     [self.view addSubview:channelView];
@@ -101,13 +105,17 @@ static NSString *infoCell = @"infoCell";
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.channelView.mas_bottom);
         make.leading.trailing.equalTo(self.view);
-        //tabBar的top
+        //tabBar的top，此处约束应该这么设置
         make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
     }];
+    //此方法也能正常显示
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        flowLayout.itemSize = self.collectionView.frame.size;
+//    });
 
 }
 /**
- *  控制器中的视图布局完成之后会调用这个方法
+ *  控制器中的视图布局完成之后会调用这个方法，此方法在布局完成后调用一次，而不是在cell设置完成后调用
  */
 -(void)viewDidLayoutSubviews
 {
@@ -116,7 +124,7 @@ static NSString *infoCell = @"infoCell";
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     //设置size,itemSize是layout的属性,大小是collectionView大小
     layout.itemSize = self.collectionView.frame.size;
-    NSLog(@"%@",NSStringFromCGRect(self.collectionView.frame));
+//    NSLog(@"%@",NSStringFromCGRect(self.collectionView.frame));
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -129,11 +137,46 @@ static NSString *infoCell = @"infoCell";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:infoCell forIndexPath:indexPath];
-
-    //设置随机颜色供测试
-    cell.backgroundColor = [UIColor randomColor];
+    //先移除cell中的contentView的子控件
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    //取得模型
+    WYChannelModel *model = self.channels[indexPath.item];
+    //将新闻列表的控制的view添加到cell的contentView中
+    //首先创建控制器
+    UIViewController *vc = [self viewControllerWithModel:model];
+    //加入控制器
+    [cell.contentView addSubview:vc.view];
+    //设置约束
+    [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(cell.contentView);
+    }];
 
     return cell;
+}
+
+- (UIViewController *)viewControllerWithModel:(WYChannelModel *) model
+{
+    //如果已经存在，从缓存中取得控制器
+    UIViewController *vc = [self.vcCache objectForKey:model.tid];
+    
+    //如果没有，那么先加载数据,并创建控制器
+    if (!vc) {
+        vc = [[WYNewsController alloc]initWithModel:model];
+        //记得将VC放入缓存中
+        [self.vcCache setObject:vc forKey:model.tid];
+    }
+    return vc;
+}
+
+#pragma mark - 懒加载
+-(NSMutableDictionary *)vcCache
+{
+    if (!_vcCache) {
+        _vcCache = [NSMutableDictionary dictionary];
+    }
+    
+    return _vcCache;
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class WYChannelModel;
 @interface WYNewsController : UIViewController
+
+- (instancetype)initWithModel:(WYChannelModel *)model;
 
 @end

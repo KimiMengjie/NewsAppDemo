@@ -44,7 +44,7 @@
     //当前遍历的索引idx
     [model.imgextra enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         //给UIImageView赋值，这里obj是字典
-        NSLog(@"%@",obj);
+//        NSLog(@"%@",obj);
         UIImageView *imageView = self.imgExtra[idx];
         [imageView sd_setImageWithURL:[NSURL URLWithString:obj[@"imgsrc"]]];
     }];

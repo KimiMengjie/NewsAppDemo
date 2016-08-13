@@ -10,12 +10,15 @@
 #import "WYNetWorkManager.h"
 #import "WYNewsModel.h"
 #import "WYNewsBaseCell.h"
+#import "WYChannelModel.h"
 
 @interface WYNewsController ()<UITableViewDataSource>
 
 @property (nonatomic,strong)NSArray *newsList;
 
 @property (nonatomic,weak)UITableView *tableView;
+
+@property (nonatomic,strong)WYChannelModel *model;
 
 @end
 
@@ -24,6 +27,15 @@ static NSString *imgExtraCellid = @"imgExtraCell";
 static NSString *bigImgCellid = @"bigImgCell";
 
 @implementation WYNewsController
+
+- (instancetype)initWithModel:(WYChannelModel *)model
+{
+    self = [super init];
+    if (self) {
+        self.model = model;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,16 +104,15 @@ static NSString *bigImgCellid = @"bigImgCell";
  */
 #pragma mark - 数据加载
 - (void)loadData{
-    
-    NSString *tid = @"T1348649079062";
+    //从模型中取得数据
+    NSString *tid = self.model.tid;
     
     [[WYNetWorkManager sharedNetWorkManager] getHomeNewListWithChannelID:tid completion:^(id response, NSError *error) {
 //        NSLog(@"%@",response);
         //取到频道id对应的数据，使用yymodel字典转模型
         NSArray *array = [NSArray yy_modelArrayWithClass:[WYNewsModel class] json:response[tid]];
-        
+        //给当前控制器的数组赋值
         self.newsList = array;
-        
         //重新刷新数据
         [self.tableView reloadData];
     }];
