@@ -20,6 +20,15 @@
 		3F805C001D5F2E7D00A677D6 /* topic_news.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F805BFF1D5F2E7D00A677D6 /* topic_news.json */; };
 		3F805C031D5F2EAB00A677D6 /* WYChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C021D5F2EAB00A677D6 /* WYChannelModel.m */; };
 		3F805C061D5F3C6E00A677D6 /* WYChannelLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C051D5F3C6E00A677D6 /* WYChannelLabel.m */; };
+		3F805C1B1D5F48B600A677D6 /* NSArray+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C0A1D5F48B600A677D6 /* NSArray+Addition.m */; };
+		3F805C1C1D5F48B600A677D6 /* NSAttributedString+Additon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C0C1D5F48B600A677D6 /* NSAttributedString+Additon.m */; };
+		3F805C1D1D5F48B600A677D6 /* NSObject+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C0E1D5F48B600A677D6 /* NSObject+Addition.m */; };
+		3F805C1E1D5F48B600A677D6 /* NSObject+Formula.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C101D5F48B600A677D6 /* NSObject+Formula.m */; };
+		3F805C1F1D5F48B600A677D6 /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C121D5F48B600A677D6 /* UIColor+Addition.m */; };
+		3F805C201D5F48B600A677D6 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C141D5F48B600A677D6 /* UIImage+Additions.m */; };
+		3F805C211D5F48B600A677D6 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C161D5F48B600A677D6 /* UIImage+Blur.m */; };
+		3F805C221D5F48B600A677D6 /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C181D5F48B600A677D6 /* UILabel+Addition.m */; };
+		3F805C231D5F48B600A677D6 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F805C1A1D5F48B600A677D6 /* UIView+Addition.m */; };
 		3FF383AD1D5E0BEF00073AA4 /* WYNewsBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF383AC1D5E0BEF00073AA4 /* WYNewsBaseCell.m */; };
 		3FF383AF1D5E102300073AA4 /* WYNewsBigImgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FF383AE1D5E102300073AA4 /* WYNewsBigImgCell.xib */; };
 		3FF383B21D5E151F00073AA4 /* WYChannelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF383B11D5E151F00073AA4 /* WYChannelView.m */; };
@@ -52,6 +61,25 @@
 		3F805C021D5F2EAB00A677D6 /* WYChannelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYChannelModel.m; sourceTree = "<group>"; };
 		3F805C041D5F3C6E00A677D6 /* WYChannelLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYChannelLabel.h; sourceTree = "<group>"; };
 		3F805C051D5F3C6E00A677D6 /* WYChannelLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYChannelLabel.m; sourceTree = "<group>"; };
+		3F805C081D5F48B600A677D6 /* Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addition.h; sourceTree = "<group>"; };
+		3F805C091D5F48B600A677D6 /* NSArray+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Addition.h"; sourceTree = "<group>"; };
+		3F805C0A1D5F48B600A677D6 /* NSArray+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Addition.m"; sourceTree = "<group>"; };
+		3F805C0B1D5F48B600A677D6 /* NSAttributedString+Additon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Additon.h"; sourceTree = "<group>"; };
+		3F805C0C1D5F48B600A677D6 /* NSAttributedString+Additon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Additon.m"; sourceTree = "<group>"; };
+		3F805C0D1D5F48B600A677D6 /* NSObject+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Addition.h"; sourceTree = "<group>"; };
+		3F805C0E1D5F48B600A677D6 /* NSObject+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Addition.m"; sourceTree = "<group>"; };
+		3F805C0F1D5F48B600A677D6 /* NSObject+Formula.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Formula.h"; sourceTree = "<group>"; };
+		3F805C101D5F48B600A677D6 /* NSObject+Formula.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Formula.m"; sourceTree = "<group>"; };
+		3F805C111D5F48B600A677D6 /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
+		3F805C121D5F48B600A677D6 /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
+		3F805C131D5F48B600A677D6 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
+		3F805C141D5F48B600A677D6 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
+		3F805C151D5F48B600A677D6 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		3F805C161D5F48B600A677D6 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
+		3F805C171D5F48B600A677D6 /* UILabel+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Addition.h"; sourceTree = "<group>"; };
+		3F805C181D5F48B600A677D6 /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Addition.m"; sourceTree = "<group>"; };
+		3F805C191D5F48B600A677D6 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
+		3F805C1A1D5F48B600A677D6 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
 		3FF383AB1D5E0BEF00073AA4 /* WYNewsBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNewsBaseCell.h; sourceTree = "<group>"; };
 		3FF383AC1D5E0BEF00073AA4 /* WYNewsBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsBaseCell.m; sourceTree = "<group>"; };
 		3FF383AE1D5E102300073AA4 /* WYNewsBigImgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYNewsBigImgCell.xib; sourceTree = "<group>"; };
@@ -89,6 +117,7 @@
 		3F3994D31D5D9FD80053C6D6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				3F805C071D5F48B600A677D6 /* Additions */,
 				3F3994D41D5DA0300053C6D6 /* WYNetWorkManager.h */,
 				3F3994D51D5DA0300053C6D6 /* WYNetWorkManager.m */,
 			);
@@ -212,6 +241,32 @@
 			);
 			name = Other;
 			path = "网易新闻/Other";
+			sourceTree = "<group>";
+		};
+		3F805C071D5F48B600A677D6 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				3F805C081D5F48B600A677D6 /* Addition.h */,
+				3F805C091D5F48B600A677D6 /* NSArray+Addition.h */,
+				3F805C0A1D5F48B600A677D6 /* NSArray+Addition.m */,
+				3F805C0B1D5F48B600A677D6 /* NSAttributedString+Additon.h */,
+				3F805C0C1D5F48B600A677D6 /* NSAttributedString+Additon.m */,
+				3F805C0D1D5F48B600A677D6 /* NSObject+Addition.h */,
+				3F805C0E1D5F48B600A677D6 /* NSObject+Addition.m */,
+				3F805C0F1D5F48B600A677D6 /* NSObject+Formula.h */,
+				3F805C101D5F48B600A677D6 /* NSObject+Formula.m */,
+				3F805C111D5F48B600A677D6 /* UIColor+Addition.h */,
+				3F805C121D5F48B600A677D6 /* UIColor+Addition.m */,
+				3F805C131D5F48B600A677D6 /* UIImage+Additions.h */,
+				3F805C141D5F48B600A677D6 /* UIImage+Additions.m */,
+				3F805C151D5F48B600A677D6 /* UIImage+Blur.h */,
+				3F805C161D5F48B600A677D6 /* UIImage+Blur.m */,
+				3F805C171D5F48B600A677D6 /* UILabel+Addition.h */,
+				3F805C181D5F48B600A677D6 /* UILabel+Addition.m */,
+				3F805C191D5F48B600A677D6 /* UIView+Addition.h */,
+				3F805C1A1D5F48B600A677D6 /* UIView+Addition.m */,
+			);
+			path = Additions;
 			sourceTree = "<group>";
 		};
 		D1D0FB17A854A4AADAEC85D1 /* Frameworks */ = {
@@ -349,14 +404,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F805C211D5F48B600A677D6 /* UIImage+Blur.m in Sources */,
 				3FF383AD1D5E0BEF00073AA4 /* WYNewsBaseCell.m in Sources */,
+				3F805C1F1D5F48B600A677D6 /* UIColor+Addition.m in Sources */,
 				3F3994DB1D5DC79D0053C6D6 /* WYNewsModel.m in Sources */,
+				3F805C201D5F48B600A677D6 /* UIImage+Additions.m in Sources */,
 				3F7098DF1D5D71D80030F5CC /* AppDelegate.m in Sources */,
 				3F805C031D5F2EAB00A677D6 /* WYChannelModel.m in Sources */,
+				3F805C221D5F48B600A677D6 /* UILabel+Addition.m in Sources */,
 				3F7098DC1D5D71D80030F5CC /* main.m in Sources */,
 				3F7098F61D5D76520030F5CC /* WYTabBarController.m in Sources */,
 				3F3994E01D5DC8540053C6D6 /* WYNewsController.m in Sources */,
+				3F805C1E1D5F48B600A677D6 /* NSObject+Formula.m in Sources */,
+				3F805C1C1D5F48B600A677D6 /* NSAttributedString+Additon.m in Sources */,
 				3FF383B71D5E15B000073AA4 /* WYHomeViewController.m in Sources */,
+				3F805C1D1D5F48B600A677D6 /* NSObject+Addition.m in Sources */,
+				3F805C1B1D5F48B600A677D6 /* NSArray+Addition.m in Sources */,
+				3F805C231D5F48B600A677D6 /* UIView+Addition.m in Sources */,
 				3FF383B21D5E151F00073AA4 /* WYChannelView.m in Sources */,
 				3F3994D61D5DA0300053C6D6 /* WYNetWorkManager.m in Sources */,
 				3F805C061D5F3C6E00A677D6 /* WYChannelLabel.m in Sources */,

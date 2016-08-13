@@ -11,8 +11,23 @@
 #import "WYNewsController.h"
 #import "WYChannelModel.h"
 
+static NSString *infoCell = @"infoCell";
 
-@interface WYHomeViewController ()
+@interface WYHomeViewController ()<UICollectionViewDataSource>
+/**
+ *  频道的视图
+ */
+
+@property (nonatomic,strong)WYChannelView *channelView;
+/**
+ *  显示新闻的collectionView
+ */
+
+@property (nonatomic,weak)UICollectionView *collectionView;
+/**
+ *  记录频道的数据
+ */
+@property (nonatomic,strong)NSArray *channels;
 
 @end
 
@@ -37,7 +52,10 @@
     WYChannelView *channelView = [WYChannelView channelView];
     
     //读取频道数据显示到界面,从模型中获取数据
-    channelView.channels = [WYChannelModel channels];
+    self.channels =[WYChannelModel channels];
+    channelView.channels = self.channels;
+    
+    self.channelView =channelView;
     //加入子视图
     [self.view addSubview:channelView];
     
@@ -47,24 +65,61 @@
         make.top.equalTo(self.mas_topLayoutGuideBottom);
     }];
     
-    /**
-     下半部分
-     */
-    WYNewsController *vc = [[WYNewsController alloc]init];
+    [self setupCollectionView];
+  
+}
+/**
+ 下半部分，添加一个collectionView
+ */
+- (void)setupCollectionView{
+    //创建一个layout
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     
-    UIView *view = vc.view;
+    //设置滑动方向
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    //设置行间距和列间距
+    flowLayout.minimumLineSpacing = 0;
+    flowLayout.minimumInteritemSpacing = 0;
     
-    [vc.view setBackgroundColor:[UIColor redColor]];
-    [self addChildViewController:vc];
-    [self.view addSubview:view];
-    [self.view bringSubviewToFront:channelView];
+    //初始化一个collectionView
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+    //注册cell
+    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:infoCell];
+    //设置数据源
+    collectionView.dataSource = self;
+    //设置分页
+    collectionView.pagingEnabled = true;
     
-    //自动布局
-    [view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(channelView.mas_bottom);
-        make.left.right.offset(0);
-        make.bottom.equalTo(self.view.mas_bottom);
+    //记录当前collectionView
+    self.collectionView = collectionView;
+    //加入到视图
+    [self.view addSubview:collectionView];
+    
+    //添加约束
+    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.channelView.mas_bottom);
+        make.leading.trailing.bottom.equalTo(self.view);
     }];
+
+}
+
+#pragma mark - UICollectionViewDataSource
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.channels.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:infoCell forIndexPath:indexPath];
+
+    //设置随机颜色供测试
+    cell.backgroundColor = [UIColor randomColor];
+    
+
+    
+    return cell;
 }
 
 @end
