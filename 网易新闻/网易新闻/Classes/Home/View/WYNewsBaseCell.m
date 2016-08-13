@@ -29,9 +29,9 @@
 {
     _model = model;
     //cell复用先清空图片
-    if (self.imgExtra != nil) {
-        self.imgExtra = nil;
-    }
+//    if (self.imgExtra != nil) {
+//        self.imgExtra = nil;
+//    }
     //设置显示内容
     [self.imgsrcView sd_setImageWithURL:[NSURL URLWithString:model.imgsrc]];
     //设置标题

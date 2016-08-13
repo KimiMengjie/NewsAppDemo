@@ -24,6 +24,8 @@
 
 - (void)setupUI
 {
+    //关闭自动调整内容位置。
+    self.automaticallyAdjustsScrollViewInsets = false;
     WYChannelView *channelView = [WYChannelView channelView];
     //加入子视图
     [self.view addSubview:channelView];
