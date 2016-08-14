@@ -33,6 +33,8 @@ static NSString *infoCell = @"infoCell";
  */
 @property (nonatomic,strong)NSMutableDictionary *vcCache;
 
+@property (nonatomic,weak)UIView *adView;
+
 @end
 
 @implementation WYHomeViewController
@@ -43,7 +45,47 @@ static NSString *infoCell = @"infoCell";
     [self setupUI];
     //获取模型数据
     [WYChannelModel channels];
+    
+    //添加边缘手势
+    UIScreenEdgePanGestureRecognizer *ges = [[UIScreenEdgePanGestureRecognizer alloc]initWithTarget:self action:@selector(showAd:)];
+    //必须设置边缘滑动
+    ges.edges = UIRectEdgeLeft;
+    //添加到View
+    [self.view addGestureRecognizer:ges];
+    // 如果ges的手势与collectionView手势都识别的话,指定以下代码,代表是识别传入的手势
+    [self.collectionView.panGestureRecognizer requireGestureRecognizerToFail:ges];
+    
 
+}
+
+- (void)showAd:(UIScreenEdgePanGestureRecognizer *)ges
+{
+    //让View跟着手指移动
+    //frame的x？手指的位置？
+    //获取手指位置
+    CGPoint p = [ges locationInView:self.view];
+    //获取ADframe不能直接修改
+    CGRect frame = self.adView.frame;
+    frame.origin.x = p.x - [UIScreen mainScreen].bounds.size.width;
+    //重新设置
+    self.adView.frame = frame;
+    
+    //当手指拖动结束和取消得到时候，判断位置是否弹回，还是满屏
+    if (ges.state == UIGestureRecognizerStateEnded || ges.state == UIGestureRecognizerStateCancelled) {
+        //判断屏幕，是否超过一半
+        if (CGRectContainsPoint(self.view.frame, self.adView.center)) {
+            //如果超过就完全显示
+            frame.origin.x = 0;
+        }else{
+            //如果没有，隐藏
+            frame.origin.x = - [UIScreen mainScreen].bounds.size.width;
+        }
+        [UIView animateWithDuration:.2 animations:^{
+            self.adView.frame = frame;
+        }];
+    }
+    
+    
 }
 
 - (void)setupUI
@@ -70,11 +112,48 @@ static NSString *infoCell = @"infoCell";
     }];
     
     [self setupCollectionView];
+    [self setupAdView];
     
     //设置channelView的代理
     channelView.delegate = self;
   
 }
+
+/**
+ *  添加广告
+ */
+- (void)setupAdView{
+    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //设置背景颜色
+    view.backgroundColor = [UIColor randomColor];
+    
+    //设置fram
+    CGRect frame = view.frame;
+    //先将图片隐藏
+    frame.origin.x = -view.frame.size.width;
+    
+    //设置view
+    view.frame = frame;
+    //将view盖到Window上
+    [[UIApplication sharedApplication].keyWindow addSubview:view];
+    self.adView = view;
+    
+    //添加轻扫手势
+    UISwipeGestureRecognizer *ges = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(closeAd)];
+    
+    //添加手势方向和view
+    ges.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.adView addGestureRecognizer:ges];
+}
+
+- (void)closeAd{
+    [UIView animateWithDuration:.2 animations:^{
+        CGRect frame = self.adView.frame;
+        frame.origin.x = - [UIScreen mainScreen].bounds.size.width;
+        self.adView.frame = frame;
+    }];
+}
+
 /**
  下半部分，添加一个collectionView
  */
